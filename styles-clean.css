@@ -110,6 +110,11 @@ body.dark-mode .hover\:shadow-lg:hover {
   display: none;
 }
 
+/* Scroll fade indicators for dark mode */
+body.dark-mode .bg-gradient-to-t {
+  background: linear-gradient(to top, rgba(59, 66, 82, 0.85), transparent) !important;
+}
+
 /* Text shadow utility for browsers that don't support it in Tailwind */
 .text-shadow-sm {
   text-shadow: 0 2px 4px rgba(76, 86, 106, 0.3);
