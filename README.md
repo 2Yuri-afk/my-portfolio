@@ -1,85 +1,33 @@
-# 🎨 Coren Andino - Portfolio
+# 👋 Coren Andino - Portfolio
 
-A modern, responsive portfolio website built with Alpine.js, Tailwind CSS, and the beautiful Nord color theme.
+Hi there! This is my personal portfolio website where you can get to know me better.
 
-## ✨ Features
+## 🎯 Why I Built This
 
-- **🎯 Responsive Design**: Masonry layout for desktop, optimized stack layout for mobile
-- **🌙 Dark/Light Mode**: Toggle between themes with smooth transitions
-- **🎨 Nord Theme**: Beautiful Nordic color palette throughout
-- **📱 Mobile First**: Fully responsive and touch-friendly
-- **🖼️ Interactive Elements**: 
-  - Clickable profile picture with About Me modal
-  - Expandable project cards with GitHub links
-  - Certificate modal for internship experience
-  - Skill icons with tooltips
-- **⚡ Performance**: Lightweight with CDN-based dependencies
-- **🎭 Animations**: Smooth transitions and hover effects
+I created this portfolio to showcase myself, my projects, and my journey as a fresh Computer Science graduate. At the same time, I wanted to learn and experiment with **Alpine.js** and **Tailwind CSS** - two technologies I've been curious about.
 
-## 🛠️ Tech Stack
-
-- **Frontend**: HTML5, Alpine.js, Tailwind CSS
-- **Styling**: Custom Nord theme, CSS Grid, Flexbox
-- **Icons**: Devicon for technology logos
-- **Fonts**: JetBrains Mono
-- **Deployment**: Vercel
-
-## 🚀 Quick Start
-
-1. Clone the repository
-```bash
-git clone https://github.com/2Yuri-afk/portfolio.git
-cd portfolio
-```
-
-2. Open in browser
-```bash
-# Simply open index.html in your browser
-# Or serve with a local server
-python -m http.server 8000
-```
-
-## 📁 Project Structure
-
-```
-portfolio/
-├── index.html              # Main portfolio page
-├── styles-tailwind.css     # Custom animations and effects
-├── styles-clean.css        # Dark mode and minimal custom styles
-└── assets/
-    ├── myself.png          # Profile picture
-    ├── dict-cert.png       # Certificate image
-    ├── dict-cert.pdf       # Certificate PDF
-    └── Resume_CorenAndino.pdf # Resume/CV
-```
-
-## 🎨 Design Philosophy
-
-This portfolio follows a **masonry board aesthetic** with a clean, professional Nord theme. The design emphasizes:
-
-- **Minimalism**: Clean layouts with purposeful white space
-- **Functionality**: Every element serves a purpose
-- **Accessibility**: Proper contrast ratios and responsive design
-- **Performance**: Optimized loading and smooth interactions
-
-## 📱 Responsive Breakpoints
-
-- **Mobile**: Stack layout with optimized spacing
-- **Desktop**: 6x4 masonry grid layout
-- **Transitions**: Smooth responsive behavior at `lg` breakpoint
-
-## 🌟 Highlights
+## 🌟 About Me
 
 - **Fresh CS Graduate** from Batangas State University TNEU
-- **Software Engineer Intern** at DICT IV-A Batangas
-- **Competition Winner**: 2nd place in HACK-CESS MANIA (Java)
-- **Tech Enthusiast**: I use Arch btw! 🐧
+- **Software Engineer Intern** at DICT IV-A Batangas  
+- **Programming Competition Enthusiast** - 2nd place in HACK-CESS MANIA
+- **Linux User** - I use Arch btw! 🐧
 
-## 📄 License
+## ✨ What You'll Find Here
 
-This project is open source and available under the [MIT License](LICENSE).
+- My background and experience
+- Projects I've worked on with links to GitHub
+- My achievements and certifications
+- Ways to get in touch with me
+- A little "About Me" when you click my profile picture!
 
-## 📞 Contact
+## 🛠️ Built With
+
+- **Alpine.js** - For interactive features
+- **Tailwind CSS** - For styling and responsive design
+- **Nord Theme** - For that clean, Nordic aesthetic
+
+## 📞 Let's Connect!
 
 - **Email**: corenandrei.andino@gmail.com
 - **LinkedIn**: [Coren Andrei Andino](https://linkedin.com/in/coren-andrei-andino)
@@ -87,4 +35,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-Built with ❤️ and lots of ☕ by Coren Andino
+Thanks for visiting! 😊
