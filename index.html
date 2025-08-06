@@ -3,7 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coren Andrei H. Andino - Portfolio</title>
+    <title>Yuri's Portfolio</title>
+
+    <!-- Favicon - Minecraft Heart -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><defs><style>.heart{fill:%23ff0000;stroke:%23000;stroke-width:0.5}</style></defs><path class=%22heart%22 d=%22M2 2h2v2H2zm2 2h2v2H4zm2 2h2v2H6zm2 2h2v2H8zm2-6h2v2h-2zm2 2h2v2h-2zm2 2h2v2h-2zm-2 2h2v2h-2zm-8 2h2v2H4zm2 2h2v2H6zm2 2h2v2H8zm2-2h2v2h-2z%22/></svg>"
+      type="image/svg+xml"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,93 +25,314 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
+            screens: {
+              xs: "480px",
+              sm: "640px",
+              md: "768px",
+              lg: "1200px",
+              xl: "1400px",
+              "2xl": "1600px",
+              // Smart breakpoints that account for display scaling
+              desktop: { raw: "(min-width: 800px) and (min-height: 500px)" },
+              laptop: {
+                raw: "(min-width: 600px) and (max-width: 799px) and (min-height: 400px)",
+              },
+              // Force desktop layout on scaled displays regardless of viewport size
+              "force-desktop": {
+                raw: "(-webkit-device-pixel-ratio: 1.25) and (min-width: 600px), (device-pixel-ratio: 1.25) and (min-width: 600px), (-webkit-device-pixel-ratio: 1.5) and (min-width: 500px), (device-pixel-ratio: 1.5) and (min-width: 500px)",
+              },
+            },
             colors: {
-              // Nord Polar Night
-              'nord-0': '#2e3440',
-              'nord-1': '#3b4252', 
-              'nord-2': '#434c5e',
-              'nord-3': '#4c566a',
-              // Nord Snow Storm
-              'nord-4': '#d8dee9',
-              'nord-5': '#e5e9f0',
-              'nord-6': '#eceff4',
-              // Nord Frost
-              'nord-7': '#8fbcbb',
-              'nord-8': '#88c0d0',
-              'nord-9': '#81a1c1',
-              'nord-10': '#5e81ac',
+              // Nord Polar Night (Dark theme backgrounds)
+              "nord-0": "#2e3440",
+              "nord-1": "#3b4252",
+              "nord-2": "#434c5e",
+              "nord-3": "#4c566a",
+              // Nord Snow Storm (Light theme backgrounds)
+              "nord-4": "#d8dee9",
+              "nord-5": "#e5e9f0",
+              "nord-6": "#eceff4",
+              // Nord Frost (Accent colors)
+              "nord-7": "#8fbcbb",
+              "nord-8": "#88c0d0",
+              "nord-9": "#81a1c1",
+              "nord-10": "#5e81ac",
+              // Nord Aurora (Additional accent colors)
+              "nord-11": "#bf616a",
+              "nord-12": "#d08770",
+              "nord-13": "#ebcb8b",
+              "nord-14": "#a3be8c",
+              "nord-15": "#b48ead",
             },
             fontFamily: {
-              'jetbrains': ['JetBrains Mono', 'monospace'],
+              jetbrains: ["JetBrains Mono", "monospace"],
             },
             textShadow: {
-              'sm': '0 2px 4px rgba(76, 86, 106, 0.3)',
-              'DEFAULT': '0 2px 4px rgba(76, 86, 106, 0.3)',
-            }
-          }
-        }
-      }
+              sm: "0 2px 4px rgba(76, 86, 106, 0.3)",
+              DEFAULT: "0 2px 4px rgba(76, 86, 106, 0.3)",
+            },
+          },
+        },
+      };
     </script>
+    <style>
+      /* Hide scrollbars while keeping scroll functionality */
+      .hide-scrollbar {
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;  /* Safari and Chrome */
+      }
+      
+      /* Dark theme styles using Nord colors */
+      .dark {
+        /* Light theme uses nord-4 to nord-6 (light grays) */
+        /* Dark theme uses nord-0 to nord-3 (dark grays) */
+      }
+      
+      .dark body {
+        background: linear-gradient(to bottom right, #2e3440, #3b4252, #434c5e) !important;
+        color: #eceff4 !important;
+      }
+      
+      .dark .bg-nord-6\/85 {
+        background-color: rgba(59, 66, 82, 0.85) !important; /* nord-1 with opacity */
+      }
+      
+      .dark .bg-nord-6 {
+        background-color: #3b4252 !important; /* nord-1 */
+      }
+      
+      .dark .bg-gradient-to-br {
+        background: linear-gradient(to bottom right, #434c5e, #3b4252, #2e3440) !important;
+      }
+      
+      .dark .text-nord-0 {
+        color: #eceff4 !important; /* nord-6 */
+      }
+      
+      .dark .text-nord-1 {
+        color: #e5e9f0 !important; /* nord-5 */
+      }
+      
+      .dark .text-nord-2 {
+        color: #d8dee9 !important; /* nord-4 */
+      }
+      
+      .dark .text-nord-3 {
+        color: #d8dee9 !important; /* nord-4 for better readability */
+      }
+      
+      .dark .text-nord-10 {
+        color: #88c0d0 !important; /* nord-8 for headers */
+      }
+      
+      .dark .text-nord-8 {
+        color: #88c0d0 !important; /* Keep nord-8 for links */
+      }
+      
+      .dark .text-nord-7 {
+        color: #8fbcbb !important; /* Keep nord-7 for accents */
+      }
+      
+      .dark .border-nord-3\/20 {
+        border-color: transparent !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+      }
+      
+      .dark .border-nord-7\/20 {
+        border-color: transparent !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+      }
+      
+      /* Subtle shadows for boxes in dark mode */
+      .dark .shadow-lg {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1) !important;
+      }
+      
+      .dark .hover\:shadow-xl:hover {
+        box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.2), 0 4px 6px -1px rgba(0, 0, 0, 0.15) !important;
+      }
+      
+      .dark .shadow-2xl {
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.25) !important;
+      }
+      
+      .dark .bg-nord-8\/5 {
+        background-color: rgba(136, 192, 208, 0.1) !important;
+      }
+      
+      .dark .bg-nord-9\/5 {
+        background-color: rgba(129, 161, 193, 0.1) !important;
+      }
+      
+      .dark .bg-nord-10\/5 {
+        background-color: rgba(94, 129, 172, 0.1) !important;
+      }
+      
+      .dark .hover\:bg-nord-8\/10:hover {
+        background-color: rgba(136, 192, 208, 0.15) !important;
+      }
+      
+      .dark .hover\:bg-nord-9\/10:hover {
+        background-color: rgba(129, 161, 193, 0.15) !important;
+      }
+      
+      .dark .hover\:bg-nord-10\/10:hover {
+        background-color: rgba(94, 129, 172, 0.15) !important;
+      }
+      
+      /* Additional dark mode text fixes */
+      .dark .text-white {
+        color: #eceff4 !important;
+      }
+      
+      .dark .text-black {
+        color: #eceff4 !important;
+      }
+      
+      .dark .text-gray-900 {
+        color: #eceff4 !important;
+      }
+      
+      .dark .text-gray-800 {
+        color: #e5e9f0 !important;
+      }
+      
+      .dark .text-gray-700 {
+        color: #d8dee9 !important;
+      }
+      
+      .dark .text-gray-600 {
+        color: #d8dee9 !important;
+      }
+      
+      .dark .text-gray-500 {
+        color: #d8dee9 !important;
+      }
+      
+      /* Ensure all text elements are readable */
+      .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+        color: #eceff4 !important;
+      }
+      
+      .dark p {
+        color: #e5e9f0 !important;
+      }
+      
+      .dark li {
+        color: #e5e9f0 !important;
+      }
+      
+      .dark span {
+        color: inherit !important;
+      }
+      
+      .dark a {
+        color: #88c0d0 !important;
+      }
+      
+      .dark a:hover {
+        color: #8fbcbb !important;
+      }
+    </style>
     <link rel="stylesheet" href="styles-tailwind.css" />
     <link rel="stylesheet" href="styles-clean.css" />
   </head>
-  <body x-data="portfolio()" class="font-jetbrains bg-gradient-to-br from-nord-6 via-nord-5 to-nord-4 min-h-screen text-nord-0 pt-4 lg:pt-10 overflow-x-hidden lg:overflow-hidden">
-    
+  <body
+    x-data="portfolio()"
+    class="font-jetbrains bg-gradient-to-br from-nord-6 via-nord-5 to-nord-4 min-h-screen text-nord-0 pt-4 desktop:pt-0 overflow-x-hidden"
+  >
     <!-- Mobile Layout -->
-    <div class="lg:hidden px-4 pb-8 space-y-4 max-w-md mx-auto">
+    <div
+      class="desktop:hidden force-desktop:hidden px-4 pb-8 space-y-4 max-w-md mx-auto"
+    >
       <!-- Header -->
-      <div class="bg-gradient-to-br from-nord-4 via-nord-5 to-nord-6 rounded-2xl p-6 shadow-lg border border-nord-3/20 backdrop-blur-sm relative overflow-hidden">
+      <div
+        class="bg-gradient-to-br from-nord-4 via-nord-5 to-nord-6 rounded-2xl p-6 shadow-lg border border-nord-3/20 backdrop-blur-sm relative overflow-hidden"
+      >
         <div class="relative z-10 flex flex-col items-center text-center">
           <div class="flex flex-col items-center mb-6">
-            <div class="relative w-24 h-24 mb-4 cursor-pointer group" @click="showAboutMe = true">
+            <div
+              class="relative w-24 h-24 mb-4 cursor-pointer group"
+              @click="showAboutMe = true"
+            >
               <img
                 src="assets/myself.png"
                 alt="Coren Andrei H. Andino"
                 class="w-full h-full rounded-full object-cover border-4 border-white/80 shadow-lg transition-all duration-300 group-hover:scale-105"
               />
-              <div class="absolute inset-0 bg-nord-10/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+              <div
+                class="absolute inset-0 bg-nord-10/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+              >
                 <span class="text-2xl">👋</span>
               </div>
             </div>
-            <h1 class="text-2xl font-bold text-nord-0 mb-0 text-shadow-sm tracking-tight">Coren Andino</h1>
+            <h1
+              class="text-2xl font-bold text-nord-0 mb-0 text-shadow-sm tracking-tight"
+            >
+              Coren Andino
+            </h1>
           </div>
-          
+
           <div class="w-full space-y-4">
             <div class="flex justify-center">
-              <div class="flex items-center gap-2 px-3 py-2 bg-nord-7/15 border border-nord-7/30 rounded-full">
-                <span class="w-2 h-2 bg-nord-7 rounded-full animate-pulse"></span>
-                <span class="text-xs font-semibold text-nord-0">Open for Work</span>
+              <div
+                class="flex items-center gap-2 px-3 py-2 bg-nord-7/15 border border-nord-7/30 rounded-full"
+              >
+                <span
+                  class="w-2 h-2 bg-nord-7 rounded-full animate-pulse"
+                ></span>
+                <span class="text-xs font-semibold text-nord-0"
+                  >Open for Work</span
+                >
               </div>
             </div>
-            
+
             <div class="text-center py-3 border-t border-b border-nord-3/20">
-              <p class="text-sm italic text-nord-1 mb-1">"Code is poetry written in logic"</p>
-              <p class="text-xs text-nord-3">- Building the future, one line at a time</p>
+              <p class="text-sm italic text-nord-1 mb-1">
+                "Code is poetry written in logic"
+              </p>
+              <p class="text-xs text-nord-3">
+                - Building the future, one line at a time
+              </p>
             </div>
-            
-            <div class="text-center space-y-1 text-sm text-nord-2">
-              <p>Tuy, Batangas</p>
-              <p>corenandrei.andino@gmail.com</p>
-              <p>+639063480692</p>
+
+            <div class="text-center space-y-1 text-sm text-nord-2 min-w-0">
+              <p class="break-words">Tuy, Batangas</p>
             </div>
-            
+
             <div class="flex flex-wrap gap-2 justify-center mt-4">
-              <a href="https://www.linkedin.com/in/coren-andrei-andino" target="_blank" 
-                 class="text-nord-0 no-underline px-3 py-1.5 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs">
+              <a
+                href="https://www.linkedin.com/in/coren-andrei-andino"
+                target="_blank"
+                class="text-nord-0 no-underline px-3 py-1.5 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs"
+              >
                 LinkedIn
               </a>
-              <a href="https://github.com/2Yuri-afk" target="_blank" 
-                 class="text-nord-0 no-underline px-3 py-1.5 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs">
+              <a
+                href="https://github.com/2Yuri-afk"
+                target="_blank"
+                class="text-nord-0 no-underline px-3 py-1.5 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs"
+              >
                 GitHub
               </a>
-              <a href="https://www.facebook.com/vulnerablepie2.0/" target="_blank" 
-                 class="text-nord-0 no-underline px-3 py-1.5 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs">
+              <a
+                href="https://www.facebook.com/vulnerablepie2.0/"
+                target="_blank"
+                class="text-nord-0 no-underline px-3 py-1.5 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs"
+              >
                 Facebook
               </a>
-              <a href="https://twitter.com/vulnerablepie" target="_blank" 
-                 class="text-nord-0 no-underline px-3 py-1.5 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs">
+              <a
+                href="https://twitter.com/vulnerablepie"
+                target="_blank"
+                class="text-nord-0 no-underline px-3 py-1.5 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs"
+              >
                 Twitter
               </a>
             </div>
@@ -114,39 +343,99 @@
       <!-- Skills Grid -->
       <div class="grid grid-cols-2 gap-4">
         <!-- Programming Languages -->
-        <div class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20">
+        <div
+          class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20"
+        >
           <h2 class="text-sm font-bold text-nord-10 mb-3">Prog. Languages</h2>
           <div class="grid grid-cols-2 gap-2 justify-items-center">
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Python">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="Python"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                alt="Python"
+                class="w-5 h-5"
+              />
             </div>
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Java">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="Java"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                alt="Java"
+                class="w-5 h-5"
+              />
             </div>
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="C/C++">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C/C++" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="C/C++"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+                alt="C/C++"
+                class="w-5 h-5"
+              />
             </div>
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="JavaScript">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="JavaScript"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                alt="JavaScript"
+                class="w-5 h-5"
+              />
             </div>
           </div>
         </div>
 
         <!-- Development Skills -->
-        <div class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20">
+        <div
+          class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20"
+        >
           <h2 class="text-sm font-bold text-nord-10 mb-3">Dev. Skills</h2>
           <div class="grid grid-cols-2 gap-2 justify-items-center">
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="React">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="React"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                alt="React"
+                class="w-5 h-5"
+              />
             </div>
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Vue.js">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="Vue.js"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
+                alt="Vue"
+                class="w-5 h-5"
+              />
             </div>
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Angular">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="Angular"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
+                alt="Angular"
+                class="w-5 h-5"
+              />
             </div>
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="HTML/CSS">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML/CSS" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="HTML/CSS"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                alt="HTML/CSS"
+                class="w-5 h-5"
+              />
             </div>
           </div>
         </div>
@@ -155,76 +444,158 @@
       <!-- Tools & OS -->
       <div class="grid grid-cols-2 gap-4">
         <!-- Developer Tools -->
-        <div class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20">
+        <div
+          class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20"
+        >
           <h2 class="text-sm font-bold text-nord-10 mb-3">Dev. Tools</h2>
           <div class="grid grid-cols-2 gap-2 justify-items-center">
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Git">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="Git"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                alt="Git"
+                class="w-5 h-5"
+              />
             </div>
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Visual Studio Code">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VSCode" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="Visual Studio Code"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                alt="VSCode"
+                class="w-5 h-5"
+              />
             </div>
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Firebase">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="Firebase"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                alt="Firebase"
+                class="w-5 h-5"
+              />
             </div>
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="GitHub">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="GitHub"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                alt="GitHub"
+                class="w-5 h-5"
+              />
             </div>
           </div>
         </div>
 
         <!-- Operating Systems -->
-        <div class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20">
+        <div
+          class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20"
+        >
           <h2 class="text-sm font-bold text-nord-10 mb-3">OS</h2>
           <div class="grid grid-cols-2 gap-2 justify-items-center">
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Windows">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="Windows"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg"
+                alt="Windows"
+                class="w-5 h-5"
+              />
             </div>
-            <div class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Linux">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="w-5 h-5" />
+            <div
+              class="flex items-center justify-center w-10 h-10 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              title="Linux"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+                alt="Linux"
+                class="w-5 h-5"
+              />
             </div>
           </div>
         </div>
       </div>
 
       <!-- Experience & Projects -->
-      <div class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20">
-        <h2 class="text-lg font-bold text-nord-10 mb-4">Experience & Projects</h2>
-        
+      <div
+        class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20"
+      >
+        <h2 class="text-lg font-bold text-nord-10 mb-4">
+          Experience & Projects
+        </h2>
+
         <div class="space-y-4">
           <!-- Experience -->
           <div class="pb-4 border-b border-nord-3/20">
-            <div class="p-3 rounded-lg border-2 border-transparent hover:border-nord-8/30 hover:bg-nord-8/5 transition-all duration-300 cursor-pointer" @click="showCertificate = true">
-              <h3 class="text-sm font-semibold text-nord-0 mb-1">Software Engineer Intern</h3>
-              <p class="text-xs font-medium text-nord-0 mb-1">DICT IV-A Batangas</p>
-              <p class="text-xs text-nord-3 italic mb-2">June 2024 - July 2024</p>
+            <div
+              class="p-3 rounded-lg border-2 border-transparent hover:border-nord-8/30 hover:bg-nord-8/5 transition-all duration-300 cursor-pointer"
+              @click="showCertificate = true"
+            >
+              <h3 class="text-sm font-semibold text-nord-0 mb-1">
+                Software Engineer Intern
+              </h3>
+              <p class="text-xs font-medium text-nord-0 mb-1">
+                DICT IV-A Batangas
+              </p>
+              <p class="text-xs text-nord-3 italic mb-2">
+                June 2024 - July 2024
+              </p>
               <ul class="text-xs text-nord-1 space-y-0.5 pl-3">
                 <li>• Frontend Developer for ILCDB Procurement System</li>
                 <li>• Developed responsive UI with Vue.js</li>
                 <li>• Integrated Firebase services</li>
               </ul>
-              <p class="text-xs text-nord-8 mt-2 font-medium">Tap to view certificate</p>
+              <p class="text-xs text-nord-8 mt-2 font-medium">
+                Tap to view certificate
+              </p>
             </div>
           </div>
-          
+
           <!-- Projects -->
           <div>
             <h3 class="text-sm font-semibold text-nord-0 mb-2">Key Projects</h3>
             <div class="space-y-2">
               <!-- Unified Thesis Management System -->
               <div class="border border-nord-7/20 rounded-lg overflow-hidden">
-                <div class="p-2 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300" @click="expandedProject = expandedProject === 'thesis' ? '' : 'thesis'">
+                <div
+                  class="p-2 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300"
+                  @click="expandedProject = expandedProject === 'thesis' ? '' : 'thesis'"
+                >
                   <div class="flex items-center justify-between">
                     <div>
-                      <h4 class="text-xs font-semibold text-nord-0">Unified Thesis Management System</h4>
-                      <p class="text-xs text-nord-3">Web app with React & Node.js</p>
+                      <h4 class="text-xs font-semibold text-nord-0">
+                        Unified Thesis Management System
+                      </h4>
+                      <p class="text-xs text-nord-3">
+                        Web app with React & Node.js
+                      </p>
                     </div>
-                    <span class="text-nord-7 transition-transform duration-300 text-xs" :class="{'rotate-180': expandedProject === 'thesis'}">▼</span>
+                    <span
+                      class="text-nord-7 transition-transform duration-300 text-xs"
+                      :class="{'rotate-180': expandedProject === 'thesis'}"
+                      >▼</span
+                    >
                   </div>
                 </div>
-                <div x-show="expandedProject === 'thesis'" x-transition class="p-2 bg-nord-6/30 border-t border-nord-7/20">
-                  <p class="text-xs text-nord-1 mb-1">Web app for managing thesis and defense scheduling</p>
-                  <a href="https://github.com/2Yuri-afk/Innogate-UTMDSS" target="_blank" class="inline-flex items-center gap-1 text-xs font-medium text-nord-8 hover:text-nord-7 transition-colors">
+                <div
+                  x-show="expandedProject === 'thesis'"
+                  x-transition
+                  class="p-2 bg-nord-6/30 border-t border-nord-7/20"
+                >
+                  <p class="text-xs text-nord-1 mb-1">
+                    Web app for managing thesis and defense scheduling
+                  </p>
+                  <a
+                    href="https://github.com/2Yuri-afk/Innogate-UTMDSS"
+                    target="_blank"
+                    class="inline-flex items-center gap-1 text-xs font-medium text-nord-8 hover:text-nord-7 transition-colors"
+                  >
                     <span>🔗</span> GitHub
                   </a>
                 </div>
@@ -232,18 +603,39 @@
 
               <!-- EcoPinoy -->
               <div class="border border-nord-7/20 rounded-lg overflow-hidden">
-                <div class="p-2 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300" @click="expandedProject = expandedProject === 'ecopinoy' ? '' : 'ecopinoy'">
+                <div
+                  class="p-2 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300"
+                  @click="expandedProject = expandedProject === 'ecopinoy' ? '' : 'ecopinoy'"
+                >
                   <div class="flex items-center justify-between">
                     <div>
-                      <h4 class="text-xs font-semibold text-nord-0">EcoPinoy</h4>
-                      <p class="text-xs text-nord-3">Mobile app with Ionic Angular</p>
+                      <h4 class="text-xs font-semibold text-nord-0">
+                        EcoPinoy
+                      </h4>
+                      <p class="text-xs text-nord-3">
+                        Mobile app with Ionic Angular
+                      </p>
                     </div>
-                    <span class="text-nord-7 transition-transform duration-300 text-xs" :class="{'rotate-180': expandedProject === 'ecopinoy'}">▼</span>
+                    <span
+                      class="text-nord-7 transition-transform duration-300 text-xs"
+                      :class="{'rotate-180': expandedProject === 'ecopinoy'}"
+                      >▼</span
+                    >
                   </div>
                 </div>
-                <div x-show="expandedProject === 'ecopinoy'" x-transition class="p-2 bg-nord-6/30 border-t border-nord-7/20">
-                  <p class="text-xs text-nord-1 mb-1">Mobile app for promoting a greener lifestyle</p>
-                  <a href="https://github.com/lemmadriaga/EcoPinoy2" target="_blank" class="inline-flex items-center gap-1 text-xs font-medium text-nord-8 hover:text-nord-7 transition-colors">
+                <div
+                  x-show="expandedProject === 'ecopinoy'"
+                  x-transition
+                  class="p-2 bg-nord-6/30 border-t border-nord-7/20"
+                >
+                  <p class="text-xs text-nord-1 mb-1">
+                    Mobile app for promoting a greener lifestyle
+                  </p>
+                  <a
+                    href="https://github.com/lemmadriaga/EcoPinoy2"
+                    target="_blank"
+                    class="inline-flex items-center gap-1 text-xs font-medium text-nord-8 hover:text-nord-7 transition-colors"
+                  >
                     <span>🔗</span> GitHub
                   </a>
                 </div>
@@ -251,18 +643,35 @@
 
               <!-- Verde -->
               <div class="border border-nord-7/20 rounded-lg overflow-hidden">
-                <div class="p-2 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300" @click="expandedProject = expandedProject === 'verde' ? '' : 'verde'">
+                <div
+                  class="p-2 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300"
+                  @click="expandedProject = expandedProject === 'verde' ? '' : 'verde'"
+                >
                   <div class="flex items-center justify-between">
                     <div>
                       <h4 class="text-xs font-semibold text-nord-0">Verde</h4>
                       <p class="text-xs text-nord-3">React Native & Firebase</p>
                     </div>
-                    <span class="text-nord-7 transition-transform duration-300 text-xs" :class="{'rotate-180': expandedProject === 'verde'}">▼</span>
+                    <span
+                      class="text-nord-7 transition-transform duration-300 text-xs"
+                      :class="{'rotate-180': expandedProject === 'verde'}"
+                      >▼</span
+                    >
                   </div>
                 </div>
-                <div x-show="expandedProject === 'verde'" x-transition class="p-2 bg-nord-6/30 border-t border-nord-7/20">
-                  <p class="text-xs text-nord-1 mb-1">Encouraged eco-friendly habits</p>
-                  <a href="https://github.com/2Yuri-afk" target="_blank" class="inline-flex items-center gap-1 text-xs font-medium text-nord-8 hover:text-nord-7 transition-colors">
+                <div
+                  x-show="expandedProject === 'verde'"
+                  x-transition
+                  class="p-2 bg-nord-6/30 border-t border-nord-7/20"
+                >
+                  <p class="text-xs text-nord-1 mb-1">
+                    Encouraged eco-friendly habits
+                  </p>
+                  <a
+                    href="https://github.com/2Yuri-afk"
+                    target="_blank"
+                    class="inline-flex items-center gap-1 text-xs font-medium text-nord-8 hover:text-nord-7 transition-colors"
+                  >
                     <span>🔗</span> Profile
                   </a>
                 </div>
@@ -270,18 +679,39 @@
 
               <!-- WoofTask -->
               <div class="border border-nord-7/20 rounded-lg overflow-hidden">
-                <div class="p-2 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300" @click="expandedProject = expandedProject === 'woof' ? '' : 'woof'">
+                <div
+                  class="p-2 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300"
+                  @click="expandedProject = expandedProject === 'woof' ? '' : 'woof'"
+                >
                   <div class="flex items-center justify-between">
                     <div>
-                      <h4 class="text-xs font-semibold text-nord-0">WoofTask</h4>
-                      <p class="text-xs text-nord-3">Dog-themed notes with Java Swing</p>
+                      <h4 class="text-xs font-semibold text-nord-0">
+                        WoofTask
+                      </h4>
+                      <p class="text-xs text-nord-3">
+                        Dog-themed notes with Java Swing
+                      </p>
                     </div>
-                    <span class="text-nord-7 transition-transform duration-300 text-xs" :class="{'rotate-180': expandedProject === 'woof'}">▼</span>
+                    <span
+                      class="text-nord-7 transition-transform duration-300 text-xs"
+                      :class="{'rotate-180': expandedProject === 'woof'}"
+                      >▼</span
+                    >
                   </div>
                 </div>
-                <div x-show="expandedProject === 'woof'" x-transition class="p-2 bg-nord-6/30 border-t border-nord-7/20">
-                  <p class="text-xs text-nord-1 mb-1">Dog-themed note-taking app</p>
-                  <a href="https://github.com/2Yuri-afk/Woof-Task" target="_blank" class="inline-flex items-center gap-1 text-xs font-medium text-nord-8 hover:text-nord-7 transition-colors">
+                <div
+                  x-show="expandedProject === 'woof'"
+                  x-transition
+                  class="p-2 bg-nord-6/30 border-t border-nord-7/20"
+                >
+                  <p class="text-xs text-nord-1 mb-1">
+                    Dog-themed note-taking app
+                  </p>
+                  <a
+                    href="https://github.com/2Yuri-afk/Woof-Task"
+                    target="_blank"
+                    class="inline-flex items-center gap-1 text-xs font-medium text-nord-8 hover:text-nord-7 transition-colors"
+                  >
                     <span>🔗</span> GitHub
                   </a>
                 </div>
@@ -294,70 +724,131 @@
       <!-- Mobile Contact & Actions -->
       <div class="space-y-4">
         <!-- Achievements -->
-        <div class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20">
+        <div
+          class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20"
+        >
           <h2 class="text-lg font-bold text-nord-10 mb-4">Achievements</h2>
           <div class="space-y-3">
-            <div class="p-3 bg-nord-9/5 border-l-4 border-nord-9 rounded-r-lg hover:bg-nord-9/10 transition-colors">
-              <h3 class="text-sm font-bold text-nord-0 mb-1">🥈 2nd Place - HACK-CESS MANIA</h3>
-              <p class="text-xs text-nord-2 mb-1">Batangas State University TNEU</p>
-              <p class="text-xs text-nord-3 italic mb-1">November 2024 • Java</p>
-              <p class="text-xs text-nord-1">University-based competitive programming contest featuring algorithmic problem-solving and data structures.</p>
+            <div
+              class="p-3 bg-nord-9/5 border-l-4 border-nord-9 rounded-r-lg hover:bg-nord-9/10 transition-colors"
+            >
+              <h3 class="text-sm font-bold text-nord-0 mb-1">
+                🥈 2nd Place - HACK-CESS MANIA
+              </h3>
+              <p class="text-xs text-nord-2 mb-1">
+                Batangas State University TNEU
+              </p>
+              <p class="text-xs text-nord-3 italic mb-1">
+                November 2024 • Java
+              </p>
+              <p class="text-xs text-nord-1">
+                University-based competitive programming contest featuring
+                algorithmic problem-solving and data structures.
+              </p>
             </div>
-            <div class="p-3 bg-nord-8/5 border-l-4 border-nord-8 rounded-r-lg hover:bg-nord-8/10 transition-colors">
-              <h3 class="text-sm font-bold text-nord-0 mb-1">🏆 TECHNOFUSION 2024</h3>
-              <p class="text-xs text-nord-2 mb-1">College Department Competition</p>
-              <p class="text-xs text-nord-3 italic mb-1">October 2024 • Python</p>
-              <p class="text-xs text-nord-1">College department-based programming competition showcasing technical skills in software development.</p>
+            <div
+              class="p-3 bg-nord-8/5 border-l-4 border-nord-8 rounded-r-lg hover:bg-nord-8/10 transition-colors"
+            >
+              <h3 class="text-sm font-bold text-nord-0 mb-1">
+                🏆 TECHNOFUSION 2024
+              </h3>
+              <p class="text-xs text-nord-2 mb-1">
+                College Department Competition
+              </p>
+              <p class="text-xs text-nord-3 italic mb-1">
+                October 2024 • Python
+              </p>
+              <p class="text-xs text-nord-1">
+                College department-based programming competition showcasing
+                technical skills in software development.
+              </p>
             </div>
-            <div class="p-3 bg-nord-10/5 border-l-4 border-nord-10 rounded-r-lg hover:bg-nord-10/10 transition-colors">
-              <h3 class="text-sm font-bold text-nord-0 mb-1">🎓 Dean's Lister</h3>
-              <p class="text-xs text-nord-2 mb-1">Batangas State University TNEU</p>
+            <div
+              class="p-3 bg-nord-10/5 border-l-4 border-nord-10 rounded-r-lg hover:bg-nord-10/10 transition-colors"
+            >
+              <h3 class="text-sm font-bold text-nord-0 mb-1">
+                🎓 Dean's Lister
+              </h3>
+              <p class="text-xs text-nord-2 mb-1">
+                Batangas State University TNEU
+              </p>
               <p class="text-xs text-nord-3 italic mb-1">2022 - 2024</p>
-              <p class="text-xs text-nord-1">Consistently achieved academic excellence with high GPA across computer science coursework.</p>
+              <p class="text-xs text-nord-1">
+                Consistently achieved academic excellence with high GPA across
+                computer science coursework.
+              </p>
             </div>
           </div>
         </div>
 
-        <div class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20">
+        <div
+          class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20"
+        >
           <h2 class="text-sm font-bold text-nord-10 mb-3">Let's Connect</h2>
           <div class="space-y-2">
-            <a href="mailto:corenandrei.andino@gmail.com" class="flex items-center gap-3 p-3 bg-nord-8/5 border border-nord-8/20 rounded-lg hover:bg-nord-8/12 transition-all">
+            <a
+              href="mailto:corenandrei.andino@gmail.com"
+              class="flex items-center gap-3 p-3 bg-nord-8/5 border border-nord-8/20 rounded-lg hover:bg-nord-8/12 transition-all"
+            >
               <span class="text-sm">📧</span>
               <div class="flex-1">
-                <div class="text-xs font-semibold text-nord-3 uppercase tracking-wide">Email</div>
-                <div class="text-xs font-medium text-nord-0">Send me an email</div>
+                <div
+                  class="text-xs font-semibold text-nord-3 uppercase tracking-wide"
+                >
+                  Email
+                </div>
+                <div class="text-xs font-medium text-nord-0">
+                  Send me an email
+                </div>
               </div>
             </a>
-            <a href="tel:+639063480692" class="flex items-center gap-3 p-3 bg-nord-9/5 border border-nord-9/20 rounded-lg hover:bg-nord-9/12 transition-all">
+            <a
+              href="tel:+639063480692"
+              class="flex items-center gap-3 p-3 bg-nord-9/5 border border-nord-9/20 rounded-lg hover:bg-nord-9/12 transition-all"
+            >
               <span class="text-sm">📞</span>
               <div class="flex-1">
-                <div class="text-xs font-semibold text-nord-3 uppercase tracking-wide">Phone</div>
-                <div class="text-xs font-medium text-nord-0">+63 906 348 0692</div>
+                <div
+                  class="text-xs font-semibold text-nord-3 uppercase tracking-wide"
+                >
+                  Phone
+                </div>
+                <div class="text-xs font-medium text-nord-0">
+                  +63 906 348 0692
+                </div>
               </div>
             </a>
-            <a href="https://linkedin.com/in/coren-andrei-andino" target="_blank" class="flex items-center gap-3 p-3 bg-nord-10/5 border border-nord-10/20 rounded-lg hover:bg-nord-10/12 transition-all">
+            <a
+              href="https://linkedin.com/in/coren-andrei-andino"
+              target="_blank"
+              class="flex items-center gap-3 p-3 bg-nord-10/5 border border-nord-10/20 rounded-lg hover:bg-nord-10/12 transition-all"
+            >
               <span class="text-sm">💼</span>
               <div class="flex-1">
-                <div class="text-xs font-semibold text-nord-3 uppercase tracking-wide">LinkedIn</div>
-                <div class="text-xs font-medium text-nord-0">Connect with me</div>
+                <div
+                  class="text-xs font-semibold text-nord-3 uppercase tracking-wide"
+                >
+                  LinkedIn
+                </div>
+                <div class="text-xs font-medium text-nord-0">
+                  Connect with me
+                </div>
               </div>
             </a>
           </div>
         </div>
 
         <div class="grid grid-cols-2 gap-4">
-          <div class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20">
+          <div
+            class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20"
+          >
             <h2 class="text-xs font-bold text-nord-10 mb-2">Resume/CV</h2>
             <div class="space-y-2">
-              <a 
-                href="assets/Resume_CorenAndino.pdf" 
-                target="_blank" 
-                class="w-full bg-nord-3 text-nord-6 py-2 px-3 rounded-lg text-xs font-semibold hover:bg-nord-2 transition-colors flex items-center justify-center"
-              >
-                View CV
-              </a>
-              <a 
-                href="assets/Resume_CorenAndino.pdf" 
+              <a
+                href="assets/Resume_CorenAndino.pdf"
+                target="_blank"
+              <a
+                href="assets/Resume_CorenAndino.pdf"
                 download="Resume_CorenAndino.pdf"
                 class="w-full bg-nord-1 text-nord-6 py-2 px-3 rounded-lg text-xs font-semibold hover:bg-nord-0 transition-colors flex items-center justify-center"
               >
@@ -366,11 +857,25 @@
             </div>
           </div>
 
-          <div class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20 flex items-center justify-center">
-            <div class="theme-toggle cursor-pointer group" @click="toggleTheme()">
-              <div class="w-16 h-8 bg-gradient-to-r from-nord-8 to-nord-7 rounded-full relative transition-all duration-500 shadow-lg hover:shadow-xl group-hover:scale-105" :class="{'from-nord-10 to-nord-9 shadow-nord-10/30': isDarkMode, 'shadow-nord-8/30': !isDarkMode}">
-                <div class="w-7 h-7 bg-gradient-to-br from-nord-6 to-white rounded-full absolute top-0.5 left-0.5 transition-all duration-500 shadow-lg flex items-center justify-center border-2 border-white/50" :class="{'transform translate-x-8 bg-gradient-to-br from-nord-0 to-nord-1 text-nord-6 border-nord-6/50': isDarkMode}">
-                  <span class="text-xs transition-all duration-300" x-text="isDarkMode ? '🌙' : '☀️'"></span>
+          <div
+            class="bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20 flex items-center justify-center"
+          >
+            <div
+              class="theme-toggle cursor-pointer group"
+              @click="toggleTheme()"
+            >
+              <div
+                class="w-16 h-8 bg-gradient-to-r from-nord-8 to-nord-7 rounded-full relative transition-all duration-500 shadow-lg hover:shadow-xl group-hover:scale-105"
+                :class="{'from-nord-10 to-nord-9 shadow-nord-10/30': isDarkMode, 'shadow-nord-8/30': !isDarkMode}"
+              >
+                <div
+                  class="w-7 h-7 bg-gradient-to-br from-nord-6 to-white rounded-full absolute top-0.5 left-0.5 transition-all duration-500 shadow-lg flex items-center justify-center border-2 border-white/50"
+                  :class="{'transform translate-x-8 bg-gradient-to-br from-nord-0 to-nord-1 text-nord-6 border-nord-6/50': isDarkMode}"
+                >
+                  <span
+                    class="text-xs transition-all duration-300"
+                    x-text="isDarkMode ? '🌙' : '☀️'"
+                  ></span>
                 </div>
               </div>
             </div>
@@ -379,43 +884,66 @@
       </div>
     </div>
 
-    <!-- Desktop Layout -->
-    <div class="hidden lg:grid grid-cols-6 grid-rows-4 gap-5 h-[calc(100vh-160px)] mx-20 my-0">
+  
+
+    <!-- Desktop Layout - Responsive Grid -->
+    <div class="hidden desktop:flex desktop:items-center desktop:justify-center min-h-screen">
+      <div class="container mx-auto max-w-screen-2xl px-4 py-4">
+        <div class="grid grid-cols-6 grid-rows-6 gap-4 p-4 w-[95vw] h-[95vh] max-w-[1600px] max-h-[1200px] overflow-hidden">
+          <!-- All grid items will have min-w-0 to prevent overflow -->
       <!-- Profile Header -->
-      <div class="row-span-4 col-start-1 bg-gradient-to-br from-nord-4 via-nord-5 to-nord-6 rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm relative overflow-hidden flex flex-col justify-center items-center text-center" x-show="true" x-transition>
-        <div class="relative z-10">
-          <div class="flex flex-col items-center mb-6">
-            <div class="relative w-36 h-36 mb-4 cursor-pointer group" @click="showAboutMe = true">
+      <div
+        class="row-span-6 col-start-1 min-w-0 bg-gradient-to-br from-nord-4 via-nord-5 to-nord-6 rounded-2xl p-4 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm relative overflow-hidden flex flex-col justify-center items-center text-center"
+        x-show="true"
+        x-transition
+      >
+        <div class="relative z-10 w-full min-w-0">
+          <div class="flex flex-col items-center mb-4">
+            <div
+              class="relative w-16 sm:w-20 md:w-24 aspect-square mb-3 cursor-pointer group"
+              @click="showAboutMe = true"
+            >
               <img
                 src="assets/myself.png"
                 alt="Coren Andrei H. Andino"
-                class="w-full h-full rounded-full object-cover border-4 border-white/80 shadow-lg transition-all duration-300 group-hover:scale-105"
+                class="w-full h-full rounded-full object-cover border-2 border-white/80 shadow-lg transition-all duration-300 group-hover:scale-105"
               />
-              <div class="absolute inset-0 bg-nord-10/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                <span class="text-2xl">👋</span>
+              <div
+                class="absolute inset-0 bg-nord-10/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+              >
+                <span class="text-lg">👋</span
+                >
               </div>
             </div>
-            <h1 class="text-4xl font-bold text-nord-0 mb-0 text-shadow-sm tracking-tight">Coren Andino</h1>
+            <h1
+              class="text-xl font-bold text-nord-0 mb-0 text-shadow-sm tracking-tight break-words"
+            >
+              Coren Andino
+            </h1>
           </div>
-          <div class="mb-0 text-sm text-nord-3 flex flex-col gap-4">
+          <div class="mb-0 text-sm text-nord-3 flex flex-col gap-4 min-w-0">
             <div class="flex gap-2 justify-center flex-wrap">
-              <div class="flex items-center gap-2 px-3 py-1.5 bg-nord-7/15 border border-nord-7/30 rounded-full transition-all duration-300">
+              <div
+                class="flex items-center gap-2 px-3 py-1.5 bg-nord-7/15 border border-nord-7/30 rounded-full transition-all duration-300"
+              >
                 <span class="w-2 h-2 bg-nord-7 rounded-full pulse-dot"></span>
-                <span class="text-xs font-semibold text-nord-0">Open for Work</span>
+                <span class="text-xs font-semibold text-nord-0"
+                  >Open for Work</span
+                >
               </div>
             </div>
-            <div class="text-center py-3 border-t border-b border-nord-3/20">
-              <p class="text-sm italic text-nord-1 mb-1 font-medium">"Code is poetry written in logic"</p>
-              <p class="text-xs text-nord-3 font-medium">
+            <div class="text-center py-3 border-t border-b border-nord-3/20 min-w-0">
+              <p class="text-sm italic text-nord-1 mb-1 font-medium break-words">
+                "Code is poetry written in logic"
+              </p>
+              <p class="text-xs text-nord-3 font-medium break-words">
                 - Building the future, one line at a time
               </p>
             </div>
             <div class="text-center space-y-1 text-sm text-nord-2">
               <p>Tuy, Batangas</p>
-              <p>corenandrei.andino@gmail.com</p>
-              <p>+639063480692</p>
             </div>
-            <div class="flex gap-3 justify-center mt-4 flex-wrap">
+            <div class="flex gap-2 justify-center mt-4 flex-wrap min-w-0">
               <a
                 href="https://www.linkedin.com/in/coren-andrei-andino"
                 target="_blank"
@@ -425,19 +953,19 @@
               <a
                 href="https://github.com/2Yuri-afk"
                 target="_blank"
-                class="text-nord-0 no-underline px-3 py-1.5 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs"
+                class="text-nord-0 no-underline px-2 py-1 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs whitespace-nowrap"
                 >GitHub</a
               >
               <a
                 href="https://www.facebook.com/vulnerablepie2.0/"
                 target="_blank"
-                class="text-nord-0 no-underline px-3 py-1.5 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs"
+                class="text-nord-0 no-underline px-2 py-1 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs whitespace-nowrap"
                 >Facebook</a
               >
               <a
                 href="https://twitter.com/vulnerablepie"
                 target="_blank"
-                class="text-nord-0 no-underline px-3 py-1.5 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs"
+                class="text-nord-0 no-underline px-2 py-1 rounded-md bg-nord-7/10 border border-nord-7/20 transition-all duration-300 hover:bg-nord-7/20 hover:-translate-y-0.5 hover:border-nord-7/40 font-medium text-xs whitespace-nowrap"
                 >Twitter</a
               >
             </div>
@@ -446,402 +974,652 @@
       </div>
 
       <!-- Programming Languages -->
-      <div class="col-start-2 row-start-1 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-start text-left hide-scrollbar overflow-hidden" x-show="true" x-transition>
-        <h2 class="text-xl font-bold text-nord-10 mb-4 flex items-center gap-2">Prog. Languages</h2>
-        <div class="grid grid-cols-2 gap-3 justify-items-center items-center w-full px-2">
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Python">
+      <div
+        class="col-start-2 row-start-1 min-w-0 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+      >
+        <!-- Header at top-left -->
+        <h2
+          class="text-[clamp(0.75rem,1vw,1rem)] font-bold text-nord-10 text-left"
+        >
+          Prog. Languages
+        </h2>
+
+        <!-- Icon grid centered vertically -->
+        <div class="flex-1 flex items-center justify-center">
+          <div
+            class="grid grid-cols-4 gap-3 items-center justify-items-center w-full"
+          >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-              alt="Python"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Java">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
-              alt="Java"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="C/C++">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
-              alt="C/C++"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="JavaScript">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-              alt="JavaScript"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
           </div>
         </div>
       </div>
 
+
       <!-- Software Development -->
-      <div class="col-start-3 row-start-1 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-start text-left hide-scrollbar overflow-hidden" x-show="true" x-transition>
-        <h2 class="text-xl font-bold text-nord-10 mb-4 flex items-center gap-2">Dev. Skills</h2>
-        <div class="grid grid-cols-2 gap-3 justify-items-center items-center w-full px-2">
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="React">
+      <div
+        class="col-start-3 row-start-1 min-w-0 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+      >
+        <!-- Header at top-left -->
+        <h2
+          class="text-[clamp(0.75rem,1vw,1rem)] font-bold text-nord-10 text-left"
+        >
+          Dev. Skills
+        </h2>
+
+        <!-- Icon grid centered vertically -->
+        <div class="flex-1 flex items-center justify-center">
+          <div
+            class="grid grid-cols-4 gap-3 items-center justify-items-center w-full"
+          >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-              alt="React"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Vue.js">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
-              alt="Vue"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Angular">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
-              alt="Angular"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="HTML/CSS">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-              alt="HTML/CSS"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
           </div>
         </div>
       </div>
 
       <!-- Developer Tools -->
-      <div class="col-start-4 row-start-1 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-start text-left hide-scrollbar overflow-hidden" x-show="true" x-transition>
-        <h2 class="text-xl font-bold text-nord-10 mb-4 flex items-center gap-2">Dev. Tools</h2>
-        <div class="grid grid-cols-2 gap-3 justify-items-center items-center w-full px-2">
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Git">
+      <div
+        class="col-start-4 row-start-1 min-w-0 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+      >
+        <!-- Header at top-left -->
+        <h2
+          class="text-[clamp(0.75rem,1vw,1rem)] font-bold text-nord-10 text-left"
+        >
+          Dev. Tools
+        </h2>
+
+        <!-- Icon grid centered vertically -->
+        <div class="flex-1 flex items-center justify-center">
+          <div
+            class="grid grid-cols-4 gap-3 items-center justify-items-center w-full"
+          >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-              alt="Git"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Visual Studio Code">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-              alt="VSCode"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Firebase">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-              alt="Firebase"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="GitHub">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-              alt="GitHub"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
           </div>
         </div>
       </div>
 
       <!-- Operating Systems -->
-      <div class="col-start-5 row-start-1 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-start text-left hide-scrollbar overflow-hidden" x-show="true" x-transition>
-        <h2 class="text-xl font-bold text-nord-10 mb-4 flex items-center gap-2">OS</h2>
-        <div class="grid grid-cols-2 gap-3 justify-items-center items-center w-full px-2">
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Windows">
+      <div
+        class="col-start-5 row-start-1 min-w-0 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+      >
+        <!-- Header at top-left -->
+        <h2
+          class="text-[clamp(0.75rem,1vw,1rem)] font-bold text-nord-10 text-left"
+        >
+          OS
+        </h2>
+
+        <!-- Icon grid centered vertically -->
+        <div class="flex-1 flex items-center justify-center">
+          <div
+            class="flex items-center justify-around w-full"
+          >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg"
-              alt="Windows"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-white/90 rounded-lg border border-nord-3/20 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer" title="Linux">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
-              alt="Linux"
-              class="w-6 h-6"
+              class="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10"
             />
           </div>
         </div>
       </div>
 
       <!-- Projects & Experience -->
-      <div class="col-span-4 row-span-2 col-start-2 row-start-2 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hide-scrollbar overflow-y-auto relative" x-show="true" x-transition 
-           x-data="{ showFade: true }" 
-           @scroll="showFade = ($el.scrollTop + $el.clientHeight < $el.scrollHeight - 10)">
-        <!-- Scroll fade indicator -->
-        <div x-show="showFade" class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-nord-6/85 to-transparent pointer-events-none rounded-b-2xl transition-opacity duration-300"></div>
+      <div
+        class="col-span-4 row-span-3 col-start-2 row-start-2 min-w-0 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hide-scrollbar overflow-y-auto relative"
+        x-show="true"
+        x-transition
+      >
         <div class="pb-6">
-          <h2 class="text-2xl font-bold text-nord-10 mb-6 flex items-center gap-2">Experience & Projects</h2>
-          
+          <h2
+            class="text-[clamp(0.75rem,1vw,1rem)] font-bold text-nord-10 text-left"
+          >
+            Experience & Projects
+          </h2>
+
           <!-- Experience -->
           <div class="mb-6 pb-4 border-b border-nord-3/20">
-          <div class="p-4 rounded-lg border-2 border-transparent hover:border-nord-8/30 hover:bg-nord-8/5 transition-all duration-300 cursor-pointer" @click="showCertificate = true">
-            <h3 class="text-lg font-semibold text-nord-0 mb-2">Software Engineer Intern</h3>
-            <p class="text-base font-semibold text-nord-0 mb-1">
-              Department of Information and Communications Technology (DICT IV-A
-              Batangas)
-            </p>
-            <p class="text-sm text-nord-3 italic mb-3">June 2024 - July 2024</p>
-            <ul class="text-sm text-nord-1 space-y-1 pl-4">
-              <li>• Frontend Developer for ILCDB Procurement System</li>
-              <li>• Developed responsive UI with Vue.js</li>
-              <li>• Integrated Firebase services</li>
-              <li>• Collaborated using GitHub</li>
-            </ul>
-            <p class="text-xs text-nord-8 mt-2 font-medium">Click to view certificate</p>
-          </div>
-        </div>
-        
-        <!-- Projects -->
-        <div>
-          <h3 class="text-lg font-semibold text-nord-0 mb-3">Key Projects</h3>
-          <div class="space-y-3">
-            <!-- Unified Thesis Management System -->
-            <div class="border border-nord-7/20 rounded-lg overflow-hidden">
-              <div class="p-3 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300" @click="expandedProject = expandedProject === 'thesis' ? '' : 'thesis'">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <h4 class="text-sm font-semibold text-nord-0">Unified Thesis Management System</h4>
-                    <p class="text-xs text-nord-3">Web app with React & Node.js</p>
-                  </div>
-                  <span class="text-nord-7 transition-transform duration-300" :class="{'rotate-180': expandedProject === 'thesis'}">▼</span>
-                </div>
-              </div>
-              <div x-show="expandedProject === 'thesis'" x-transition class="p-4 bg-nord-6/30 border-t border-nord-7/20">
-                <p class="text-sm text-nord-1 mb-3">Web app for managing thesis and defense scheduling</p>
-                <ul class="text-xs text-nord-2 space-y-1 mb-3 pl-4">
-                  <li>• UI developed with React</li>
-                  <li>• Assisted in backend development with Node.js</li>
-                  <li>• Collaborated using GitHub</li>
-                </ul>
-                <a href="https://github.com/2Yuri-afk/Innogate-UTMDSS" target="_blank" class="inline-flex items-center gap-2 text-xs font-medium text-nord-8 hover:text-nord-7 transition-colors">
-                  <span>🔗</span> View on GitHub
-                </a>
-              </div>
-            </div>
-
-            <!-- EcoPinoy -->
-            <div class="border border-nord-7/20 rounded-lg overflow-hidden">
-              <div class="p-3 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300" @click="expandedProject = expandedProject === 'ecopinoy' ? '' : 'ecopinoy'">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <h4 class="text-sm font-semibold text-nord-0">EcoPinoy</h4>
-                    <p class="text-xs text-nord-3">Mobile app with Ionic Angular</p>
-                  </div>
-                  <span class="text-nord-7 transition-transform duration-300" :class="{'rotate-180': expandedProject === 'ecopinoy'}">▼</span>
-                </div>
-              </div>
-              <div x-show="expandedProject === 'ecopinoy'" x-transition class="p-4 bg-nord-6/30 border-t border-nord-7/20">
-                <p class="text-sm text-nord-1 mb-3">Mobile app for promoting a greener lifestyle</p>
-                <ul class="text-xs text-nord-2 space-y-1 mb-3 pl-4">
-                  <li>• Co-founder, developed using Ionic Angular</li>
-                  <li>• Integrated Firebase for auth and database</li>
-                  <li>• Successfully pitched</li>
-                </ul>
-                <a href="https://github.com/lemmadriaga/EcoPinoy2" target="_blank" class="inline-flex items-center gap-2 text-xs font-medium text-nord-8 hover:text-nord-7 transition-colors">
-                  <span>🔗</span> View on GitHub
-                </a>
-              </div>
-            </div>
-
-            <!-- Verde -->
-            <div class="border border-nord-7/20 rounded-lg overflow-hidden">
-              <div class="p-3 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300" @click="expandedProject = expandedProject === 'verde' ? '' : 'verde'">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <h4 class="text-sm font-semibold text-nord-0">Verde</h4>
-                    <p class="text-xs text-nord-3">React Native & Firebase</p>
-                  </div>
-                  <span class="text-nord-7 transition-transform duration-300" :class="{'rotate-180': expandedProject === 'verde'}">▼</span>
-                </div>
-              </div>
-              <div x-show="expandedProject === 'verde'" x-transition class="p-4 bg-nord-6/30 border-t border-nord-7/20">
-                <p class="text-sm text-nord-1 mb-3">Encouraged eco-friendly habits</p>
-                <ul class="text-xs text-nord-2 space-y-1 mb-3 pl-4">
-                  <li>• Made with React Native and Firebase</li>
-                </ul>
-                <a href="https://github.com/2Yuri-afk" target="_blank" class="inline-flex items-center gap-2 text-xs font-medium text-nord-8 hover:text-nord-7 transition-colors">
-                  <span>🔗</span> View Profile (Repo unavailable)
-                </a>
-              </div>
-            </div>
-
-            <!-- WoofTask -->
-            <div class="border border-nord-7/20 rounded-lg overflow-hidden mb-6">
-              <div class="p-3 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300" @click="expandedProject = expandedProject === 'woof' ? '' : 'woof'">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <h4 class="text-sm font-semibold text-nord-0">WoofTask</h4>
-                    <p class="text-xs text-nord-3">Dog-themed notes with Java Swing</p>
-                  </div>
-                  <span class="text-nord-7 transition-transform duration-300" :class="{'rotate-180': expandedProject === 'woof'}">▼</span>
-                </div>
-              </div>
-              <div x-show="expandedProject === 'woof'" x-transition class="p-4 bg-nord-6/30 border-t border-nord-7/20">
-                <p class="text-sm text-nord-1 mb-3">Dog-themed note-taking app</p>
-                <ul class="text-xs text-nord-2 space-y-1 mb-3 pl-4">
-                  <li>• GUI using Java Swing</li>
-                  <li>• CRUD features</li>
-                </ul>
-                <a href="https://github.com/2Yuri-afk/Woof-Task" target="_blank" class="inline-flex items-center gap-2 text-xs font-medium text-nord-8 hover:text-nord-7 transition-colors">
-                  <span>🔗</span> View on GitHub
-                </a>
-              </div>
+            <div
+              class="p-4 rounded-lg border-2 border-transparent hover:border-nord-8/30 hover:bg-nord-8/5 transition-all duration-300 cursor-pointer"
+              @click="showCertificate = true"
+            >
+              <h3 class="text-[clamp(0.75rem,1vw,1rem)] font-semibold text-nord-0 mb-2 break-words">
+                Software Engineer Intern
+              </h3>
+              <p class="text-[clamp(0.75rem,1vw,1rem)] font-semibold text-nord-0 mb-1 break-words">
+                Department of Information and Communications Technology (DICT
+                IV-A Batangas)
+              </p>
+              <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-3 italic mb-3">
+                June 2024 - July 2024
+              </p>
+              <ul class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-1 space-y-1 pl-4 min-w-0">
+                <li class="break-words">• Frontend Developer for ILCDB Procurement System</li>
+                <li class="break-words">• Developed responsive UI with Vue.js</li>
+                <li class="break-words">• Integrated Firebase services</li>
+                <li class="break-words">• Collaborated using GitHub</li>
+              </ul>
+              <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-8 mt-2 font-medium">
+                Click to view certificate
+              </p>
             </div>
           </div>
-        </div>
+
+          <!-- Projects -->
+          <div>
+            <h3 class="text-[clamp(0.7rem,0.9vw,0.9rem)] font-semibold text-nord-0 mb-3 break-words">Key Projects</h3>
+            <div class="space-y-3">
+              <!-- Unified Thesis Management System -->
+              <div class="border border-nord-7/20 rounded-lg overflow-hidden">
+                <div
+                  class="p-3 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300"
+                  @click="expandedProject = expandedProject === 'thesis' ? '' : 'thesis'"
+                >
+                  <div class="flex items-center justify-between min-w-0">
+                    <div class="min-w-0 flex-1">
+                      <h4 class="text-[clamp(0.6rem,0.8vw,0.8rem)] font-semibold text-nord-0 break-words">
+                        Unified Thesis Management System
+                      </h4>
+                      <p class="text-[clamp(0.55rem,0.75vw,0.75rem)] text-nord-3 break-words">
+                        Web app with React & Node.js
+                      </p>
+                    </div>
+                    <span
+                      class="text-nord-7 transition-transform duration-300"
+                      :class="{'rotate-180': expandedProject === 'thesis'}"
+                      >▼</span
+                    >
+                  </div>
+                </div>
+                <div
+                  x-show="expandedProject === 'thesis'"
+                  x-transition
+                  class="p-4 bg-nord-6/30 border-t border-nord-7/20"
+                >
+                  <p class="text-[clamp(0.65rem,0.85vw,0.85rem)] text-nord-1 mb-3">
+                    Web app for managing thesis and defense scheduling
+                  </p>
+                  <ul class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-2 space-y-1 mb-3 pl-4">
+                    <li>• UI developed with React</li>
+                    <li>• Assisted in backend development with Node.js</li>
+                    <li>• Collaborated using GitHub</li>
+                  </ul>
+                  <a
+                    href="https://github.com/2Yuri-afk/Innogate-UTMDSS"
+                    target="_blank"
+                    class="inline-flex items-center gap-2 text-[clamp(0.6rem,0.8vw,0.8rem)] font-medium text-nord-8 hover:text-nord-7 transition-colors"
+                  >
+                    <span>🔗</span> View on GitHub
+                  </a>
+                </div>
+              </div>
+
+              <!-- EcoPinoy -->
+              <div class="border border-nord-7/20 rounded-lg overflow-hidden">
+                <div
+                  class="p-3 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300"
+                  @click="expandedProject = expandedProject === 'ecopinoy' ? '' : 'ecopinoy'"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-[clamp(0.6rem,0.8vw,0.8rem)] font-semibold text-nord-0">
+                        EcoPinoy
+                      </h4>
+                      <p class="text-[clamp(0.55rem,0.75vw,0.75rem)] text-nord-3">
+                        Mobile app with Ionic Angular
+                      </p>
+                    </div>
+                    <span
+                      class="text-nord-7 transition-transform duration-300"
+                      :class="{'rotate-180': expandedProject === 'ecopinoy'}"
+                      >▼</span
+                    >
+                  </div>
+                </div>
+                <div
+                  x-show="expandedProject === 'ecopinoy'"
+                  x-transition
+                  class="p-4 bg-nord-6/30 border-t border-nord-7/20"
+                >
+                  <p class="text-[clamp(0.65rem,0.85vw,0.85rem)] text-nord-1 mb-3">
+                    Mobile app for promoting a greener lifestyle
+                  </p>
+                  <ul class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-2 space-y-1 mb-3 pl-4">
+                    <li>• Co-founder, developed using Ionic Angular</li>
+                    <li>• Integrated Firebase for auth and database</li>
+                    <li>• Successfully pitched</li>
+                  </ul>
+                  <a
+                    href="https://github.com/lemmadriaga/EcoPinoy2"
+                    target="_blank"
+                    class="inline-flex items-center gap-2 text-[clamp(0.6rem,0.8vw,0.8rem)] font-medium text-nord-8 hover:text-nord-7 transition-colors"
+                  >
+                    <span>🔗</span> View on GitHub
+                  </a>
+                </div>
+              </div>
+
+              <!-- Verde -->
+              <div class="border border-nord-7/20 rounded-lg overflow-hidden">
+                <div
+                  class="p-3 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300"
+                  @click="expandedProject = expandedProject === 'verde' ? '' : 'verde'"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-[clamp(0.6rem,0.8vw,0.8rem)] font-semibold text-nord-0">Verde</h4>
+                      <p class="text-[clamp(0.55rem,0.75vw,0.75rem)] text-nord-3">React Native & Firebase</p>
+                    </div>
+                    <span
+                      class="text-nord-7 transition-transform duration-300"
+                      :class="{'rotate-180': expandedProject === 'verde'}"
+                      >▼</span
+                    >
+                  </div>
+                </div>
+                <div
+                  x-show="expandedProject === 'verde'"
+                  x-transition
+                  class="p-4 bg-nord-6/30 border-t border-nord-7/20"
+                >
+                  <p class="text-[clamp(0.65rem,0.85vw,0.85rem)] text-nord-1 mb-3">
+                    Encouraged eco-friendly habits
+                  </p>
+                  <ul class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-2 space-y-1 mb-3 pl-4">
+                    <li>• Made with React Native and Firebase</li>
+                  </ul>
+                  <a
+                    href="https://github.com/2Yuri-afk"
+                    target="_blank"
+                    class="inline-flex items-center gap-2 text-[clamp(0.6rem,0.8vw,0.8rem)] font-medium text-nord-8 hover:text-nord-7 transition-colors"
+                  >
+                    <span>🔗</span> View Profile (Repo unavailable)
+                  </a>
+                </div>
+              </div>
+
+              <!-- WoofTask -->
+              <div
+                class="border border-nord-7/20 rounded-lg overflow-hidden mb-6"
+              >
+                <div
+                  class="p-3 bg-nord-7/5 border-l-4 border-nord-7 cursor-pointer hover:bg-nord-7/10 transition-all duration-300"
+                  @click="expandedProject = expandedProject === 'woof' ? '' : 'woof'"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-[clamp(0.6rem,0.8vw,0.8rem)] font-semibold text-nord-0">
+                        WoofTask
+                      </h4>
+                      <p class="text-[clamp(0.55rem,0.75vw,0.75rem)] text-nord-3">
+                        Dog-themed notes with Java Swing
+                      </p>
+                    </div>
+                    <span
+                      class="text-nord-7 transition-transform duration-300"
+                      :class="{'rotate-180': expandedProject === 'woof'}"
+                      >▼</span
+                    >
+                  </div>
+                </div>
+                <div
+                  x-show="expandedProject === 'woof'"
+                  x-transition
+                  class="p-4 bg-nord-6/30 border-t border-nord-7/20"
+                >
+                  <p class="text-[clamp(0.65rem,0.85vw,0.85rem)] text-nord-1 mb-3">
+                    Dog-themed note-taking app
+                  </p>
+                  <ul class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-2 space-y-1 mb-3 pl-4">
+                    <li>• GUI using Java Swing</li>
+                    <li>• CRUD features</li>
+                  </ul>
+                  <a
+                    href="https://github.com/2Yuri-afk/Woof-Task"
+                    target="_blank"
+                    class="inline-flex items-center gap-2 text-[clamp(0.6rem,0.8vw,0.8rem)] font-medium text-nord-8 hover:text-nord-7 transition-colors"
+                  >
+                    <span>🔗</span> View on GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Education -->
-      <div class="col-span-2 col-start-2 row-start-4 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" x-show="true" x-transition>
-        <h2 class="text-xl font-bold text-nord-10 mb-4">Education</h2>
-        <div class="space-y-2">
-          <h3 class="font-semibold text-nord-0">Bachelor of Science in Computer Science</h3>
-          <p class="text-sm font-medium text-nord-0">Batangas State University TNEU - Alangilan</p>
-          <p class="text-xs text-nord-3 italic">2021 - 2025</p>
-          <p class="text-xs text-nord-3">Batangas City</p>
+      <div
+        class="row-span-2 col-start-2 col-span-2 min-w-0 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hide-scrollbar overflow-y-auto relative"
+        x-show="true"
+        x-transition
+      >
+        <h2 class="text-[clamp(0.75rem,1vw,1rem)] font-bold text-nord-10 text-left">Education</h2>
+        <div class="space-y-4">
+          <div
+            class="p-4 bg-nord-8/5 border-l-4 border-nord-8 rounded-r-lg hover:bg-nord-8/10 transition-colors"
+          >
+            <h3 class="text-[clamp(0.65rem,0.85vw,0.85rem)] font-bold text-nord-0 mb-2 break-words">
+              🎓 Bachelor of Science in Computer Science
+            </h3>
+            <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] font-semibold text-nord-0 mb-1 break-words">
+              Batangas State University TNEU - Alangilan
+            </p>
+            <p class="text-[clamp(0.55rem,0.75vw,0.75rem)] text-nord-3 italic mb-2">2021 - Present</p>
+            <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-1 break-words">
+              Currently pursuing a degree in Computer Science with focus on
+              software development, algorithms, and system design.
+            </p>
+          </div>
+          
+          <div
+            class="p-4 bg-nord-9/5 border-l-4 border-nord-9 rounded-r-lg hover:bg-nord-9/10 transition-colors"
+          >
+            <h3 class="text-[clamp(0.65rem,0.85vw,0.85rem)] font-bold text-nord-0 mb-2 break-words">
+              📚 Senior High School - STEM Track
+            </h3>
+            <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] font-semibold text-nord-0 mb-1 break-words">
+              Tuy Senior High School
+            </p>
+            <p class="text-[clamp(0.55rem,0.75vw,0.75rem)] text-nord-3 italic mb-2">2019 - 2021</p>
+            <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-1 break-words">
+              Completed Senior High School with STEM (Science, Technology, Engineering, and Mathematics) track, building foundation in analytical and technical skills.
+            </p>
+          </div>
         </div>
       </div>
 
       <!-- Achievements -->
-      <div class="col-span-2 col-start-4 row-start-4 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hide-scrollbar overflow-y-auto relative" x-show="true" x-transition
-           x-data="{ showFade: true }" 
-           @scroll="showFade = ($el.scrollTop + $el.clientHeight < $el.scrollHeight - 10)">
-        <!-- Scroll fade indicator -->
-        <div x-show="showFade" class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-nord-6/85 to-transparent pointer-events-none rounded-b-2xl transition-opacity duration-300"></div>
+      <div
+        class="col-span-2 col-start-4 row-start-5 row-span-2 min-w-0 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hide-scrollbar overflow-y-auto relative"
+        x-show="true"
+        x-transition
+      >
         <div class="pb-6">
-          <h2 class="text-xl font-bold text-nord-10 mb-4">Achievements</h2>
+          <h2 class="text-[clamp(0.75rem,1vw,1rem)] font-bold text-nord-10 text-left">Achievements</h2>
           <div class="space-y-4">
-          <div class="p-4 bg-nord-9/5 border-l-4 border-nord-9 rounded-r-lg hover:bg-nord-9/10 transition-colors">
-            <h3 class="text-base font-bold text-nord-0 mb-2">🥈 2nd Place - HACK-CESS MANIA Programming Competition</h3>
-            <p class="text-sm text-nord-2 mb-2">Batangas State University TNEU</p>
-            <p class="text-xs text-nord-3 italic mb-2">November 2024</p>
-            <p class="text-sm text-nord-1">Secured 2nd place in a university-based competitive programming contest using Java, featuring algorithmic problem-solving, data structures, and optimization challenges among computer science students.</p>
-          </div>
-          <div class="p-4 bg-nord-8/5 border-l-4 border-nord-8 rounded-r-lg hover:bg-nord-8/10 transition-colors">
-            <h3 class="text-base font-bold text-nord-0 mb-2">🏆 TECHNOFUSION 2024 Programming Competition</h3>
-            <p class="text-sm text-nord-2 mb-2">College Department Competition</p>
-            <p class="text-xs text-nord-3 italic mb-2">October 2024</p>
-            <p class="text-sm text-nord-1">Participated in a college department-based programming competition using Python, showcasing technical skills in software development, problem-solving, and innovative thinking.</p>
-          </div>
-          <div class="p-4 bg-nord-10/5 border-l-4 border-nord-10 rounded-r-lg hover:bg-nord-10/10 transition-colors mb-6">
-            <h3 class="text-base font-bold text-nord-0 mb-2">🎓 Dean's Lister (Multiple Semesters)</h3>
-            <p class="text-sm text-nord-2 mb-2">Batangas State University TNEU - Alangilan</p>
-            <p class="text-xs text-nord-3 italic mb-2">2022 - 2024</p>
-            <p class="text-sm text-nord-1">Consistently achieved academic excellence with high GPA, demonstrating strong performance across computer science coursework including programming, algorithms, and software engineering.</p>
-          </div>
+            <div
+              class="p-4 bg-nord-9/5 border-l-4 border-nord-9 rounded-r-lg hover:bg-nord-9/10 transition-colors"
+            >
+              <h3 class="text-[clamp(0.65rem,0.85vw,0.85rem)] font-bold text-nord-0 mb-2 break-words">
+                🥈 2nd Place - HACK-CESS MANIA Programming Competition
+              </h3>
+              <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-2 mb-1 break-words">
+                Batangas State University TNEU
+              </p>
+              <p class="text-[clamp(0.55rem,0.75vw,0.75rem)] text-nord-3 italic mb-2">November 2024</p>
+              <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-1 break-words">
+                Secured 2nd place in a university-based competitive programming
+                contest using Java, featuring algorithmic problem-solving, data
+                structures, and optimization challenges among computer science
+                students.
+              </p>
+            </div>
+            <div
+              class="p-4 bg-nord-8/5 border-l-4 border-nord-8 rounded-r-lg hover:bg-nord-8/10 transition-colors"
+            >
+              <h3 class="text-[clamp(0.65rem,0.85vw,0.85rem)] font-bold text-nord-0 mb-2">
+                🏆 TECHNOFUSION 2024 Programming Competition
+              </h3>
+              <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-2 mb-2">
+                College Department Competition
+              </p>
+              <p class="text-[clamp(0.55rem,0.75vw,0.75rem)] text-nord-3 italic mb-2">October 2024</p>
+              <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-1">
+                Participated in a college department-based programming
+                competition using Python, showcasing technical skills in
+                software development, problem-solving, and innovative thinking.
+              </p>
+            </div>
+            <div
+              class="p-4 bg-nord-10/5 border-l-4 border-nord-10 rounded-r-lg hover:bg-nord-10/10 transition-colors mb-6"
+            >
+              <h3 class="text-[clamp(0.65rem,0.85vw,0.85rem)] font-bold text-nord-0 mb-2">
+                🎓 Dean's Lister (Multiple Semesters)
+              </h3>
+              <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-2 mb-2">
+                Batangas State University TNEU - Alangilan
+              </p>
+              <p class="text-[clamp(0.55rem,0.75vw,0.75rem)] text-nord-3 italic mb-2">2022 - 2024</p>
+              <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-1">
+                Consistently achieved academic excellence with high GPA,
+                demonstrating strong performance across computer science
+                coursework including programming, algorithms, and software
+                engineering.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Contact & Actions (col-start-6, row-start-1, row-span-2) -->
-      <div class="row-span-2 col-start-6 row-start-1 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hide-scrollbar overflow-hidden" x-show="true" x-transition>
-        <h2 class="text-xl font-bold text-nord-10 mb-4">Let's Connect</h2>
-        <p class="text-sm text-nord-3 italic text-center mb-4">Ready to collaborate on exciting projects!</p>
-        <div class="space-y-3">
-          <a href="mailto:corenandrei.andino@gmail.com" class="flex items-center gap-3 p-3 bg-nord-8/5 border border-nord-8/20 rounded-lg hover:bg-nord-8/12 hover:shadow-md transition-all">
-            <span class="text-lg">📧</span>
-            <div class="flex-1">
-              <div class="text-xs font-semibold text-nord-3 uppercase tracking-wide">Email</div>
-              <div class="text-sm font-medium text-nord-0">Send me an email</div>
+      <div
+        class="row-span-3 col-start-6 row-start-1 min-w-0 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hide-scrollbar overflow-y-auto flex flex-col"
+        x-show="true"
+        x-transition
+      >
+        <h2 class="text-[clamp(0.75rem,1vw,1rem)] font-bold text-nord-10 text-left mb-2">Let's Connect</h2>
+        <p class="text-[clamp(0.6rem,0.8vw,0.8rem)] text-nord-3 italic text-center mb-4 break-words">
+          Ready to collaborate on exciting projects!
+        </p>
+        <div class="flex-1 flex flex-col justify-center space-y-3">
+          <a
+            href="mailto:corenandrei.andino@gmail.com"
+            class="flex items-center gap-2 p-2 bg-nord-8/5 border border-nord-8/20 rounded-lg hover:bg-nord-8/12 hover:shadow-md transition-all min-w-0"
+          >
+            <span class="text-base">📧</span>
+            <div class="flex-1 min-w-0">
+              <div
+                class="text-xs font-semibold text-nord-3 uppercase tracking-wide"
+              >
+                Email
+              </div>
+              <div class="text-xs font-medium text-nord-0 break-words">
+                Send me an email
+              </div>
             </div>
           </a>
-          <a href="tel:+639063480692" class="flex items-center gap-3 p-3 bg-nord-9/5 border border-nord-9/20 rounded-lg hover:bg-nord-9/12 hover:shadow-md transition-all">
-            <span class="text-lg">📞</span>
-            <div class="flex-1">
-              <div class="text-xs font-semibold text-nord-3 uppercase tracking-wide">Phone</div>
-              <div class="text-sm font-medium text-nord-0">+63 906 348 0692</div>
+          <a
+            href="tel:+639063480692"
+            class="flex items-center gap-2 p-2 bg-nord-9/5 border border-nord-9/20 rounded-lg hover:bg-nord-9/12 hover:shadow-md transition-all min-w-0"
+          >
+            <span class="text-base">📞</span>
+            <div class="flex-1 min-w-0">
+              <div
+                class="text-xs font-semibold text-nord-3 uppercase tracking-wide"
+              >
+                Phone
+              </div>
+              <div class="text-xs font-medium text-nord-0 break-words">
+                +63 906 348 0692
+              </div>
             </div>
           </a>
-          <a href="https://linkedin.com/in/coren-andrei-andino" target="_blank" class="flex items-center gap-3 p-3 bg-nord-10/5 border border-nord-10/20 rounded-lg hover:bg-nord-10/12 hover:shadow-md transition-all">
-            <span class="text-lg">💼</span>
-            <div class="flex-1">
-              <div class="text-xs font-semibold text-nord-3 uppercase tracking-wide">LinkedIn</div>
-              <div class="text-sm font-medium text-nord-0">Connect with me</div>
+          <a
+            href="https://linkedin.com/in/coren-andrei-andino"
+            target="_blank"
+            class="flex items-center gap-2 p-2 bg-nord-10/5 border border-nord-10/20 rounded-lg hover:bg-nord-10/12 hover:shadow-md transition-all min-w-0"
+          >
+            <span class="text-base">💼</span>
+            <div class="flex-1 min-w-0">
+              <div
+                class="text-xs font-semibold text-nord-3 uppercase tracking-wide"
+              >
+                LinkedIn
+              </div>
+              <div class="text-xs font-medium text-nord-0 break-words">Connect with me</div>
             </div>
           </a>
         </div>
       </div>
 
       <!-- Resume/CV (col-start-6, row-start-3) -->
-      <div class="col-start-6 row-start-3 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" x-show="true" x-transition>
-        <h2 class="text-lg font-bold text-nord-10 mb-3">Resume/CV</h2>
+      <div
+        class="col-start-6 row-start-4 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hide-scrollbar overflow-y-auto"
+        x-show="true"
+        x-transition
+      >
+        <h2 class="text-[clamp(0.75rem,1vw,1rem)] font-bold text-nord-10 text-left">Resume/CV</h2>
         <div class="space-y-3">
-          <a 
-            href="assets/Resume_CorenAndino.pdf" 
-            target="_blank" 
-            class="w-full bg-nord-3 text-nord-6 py-3 px-4 rounded-lg text-sm font-semibold hover:bg-nord-2 transition-colors shadow-md hover:shadow-lg flex items-center justify-center"
-          >
-            View CV
-          </a>
-          <a 
-            href="assets/Resume_CorenAndino.pdf" 
+          <a
+            href="assets/Resume_CorenAndino.pdf"
+            target="_blank"
+          <a
+            href="assets/Resume_CorenAndino.pdf"
             download="Resume_CorenAndino.pdf"
-            class="w-full bg-nord-1 text-nord-6 py-3 px-4 rounded-lg text-sm font-semibold hover:bg-nord-0 transition-colors shadow-md hover:shadow-lg flex items-center justify-center"
+            class="w-full bg-nord-1 text-nord-6 py-[clamp(0.5rem,1.5vw,0.75rem)] px-[clamp(0.75rem,2vw,1rem)] rounded-lg text-[clamp(0.7rem,1vw,0.875rem)] font-semibold hover:bg-nord-0 transition-colors shadow-md hover:shadow-lg flex items-center justify-center min-h-[2.5rem] break-words"
           >
-            Download CV
+            <span class="truncate">Download CV</span>
           </a>
         </div>
       </div>
 
       <!-- Theme Toggle (col-start-6, row-start-4) -->
-      <div class="col-start-6 row-start-4 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center" x-show="true" x-transition>
+      <div
+        class="col-start-6 row-start-5 bg-nord-6/85 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center"
+        x-show="true"
+        x-transition
+      >
         <div class="theme-toggle cursor-pointer group" @click="toggleTheme()">
-          <div class="w-20 h-10 bg-gradient-to-r from-nord-8 to-nord-7 rounded-full relative transition-all duration-500 shadow-lg hover:shadow-xl group-hover:scale-105" :class="{'from-nord-10 to-nord-9 shadow-nord-10/30': isDarkMode, 'shadow-nord-8/30': !isDarkMode}">
-            <div class="w-8 h-8 bg-gradient-to-br from-nord-6 to-white rounded-full absolute top-1 left-1 transition-all duration-500 shadow-lg flex items-center justify-center border-2 border-white/50" :class="{'transform translate-x-10 bg-gradient-to-br from-nord-0 to-nord-1 text-nord-6 border-nord-6/50': isDarkMode}">
-              <span class="text-sm transition-all duration-300" x-text="isDarkMode ? '🌙' : '☀️'"></span>
+          <div
+            class="w-20 h-10 bg-gradient-to-r from-nord-8 to-nord-7 rounded-full relative transition-all duration-500 shadow-lg hover:shadow-xl group-hover:scale-105"
+            :class="{'from-nord-10 to-nord-9 shadow-nord-10/30': isDarkMode, 'shadow-nord-8/30': !isDarkMode}"
+          >
+            <div
+              class="w-8 h-8 bg-gradient-to-br from-nord-6 to-white rounded-full absolute top-1 left-1 transition-all duration-500 shadow-lg flex items-center justify-center border-2 border-white/50"
+              :class="{'transform translate-x-10 bg-gradient-to-br from-nord-0 to-nord-1 text-nord-6 border-nord-6/50': isDarkMode}"
+            >
+              <span
+                class="text-sm transition-all duration-300"
+                x-text="isDarkMode ? '🌙' : '☀️'"
+              ></span>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Picture Box (col-start-6, row-start-6) -->
+      <div
+        class="col-start-6 row-start-6 bg-nord-6/85 backdrop-blur-sm rounded-2xl shadow-lg border border-nord-3/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+        x-show="true"
+        x-transition
+      >
+        <img
+          :src="isDarkMode ? 'assets/pic1.png' : 'assets/pic2.png'"
+          :alt="isDarkMode ? 'Dark mode picture' : 'Light mode picture'"
+          class="w-full h-full object-cover transition-all duration-500"
+        />
+      </div>
     </div>
 
     <!-- Certificate Modal -->
-    <div x-show="showCertificate" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" @click="showCertificate = false">
-      <div class="bg-nord-6 rounded-2xl p-6 max-w-4xl max-h-[90vh] overflow-auto shadow-2xl border border-nord-3/20" @click.stop>
+    <div
+      x-show="showCertificate"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-in duration-200"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      @click="showCertificate = false"
+    >
+      <div
+        class="bg-nord-6 dark:bg-nord-1 rounded-2xl p-6 max-w-4xl max-h-[90vh] hide-scrollbar overflow-y-auto shadow-2xl border border-nord-3/20 dark:border-nord-3/30"
+        @click.stop
+      >
         <div class="flex items-center justify-between mb-4">
-          <h3 class="text-xl font-bold text-nord-0">Internship Certificate</h3>
-          <button @click="showCertificate = false" class="text-nord-3 hover:text-nord-0 transition-colors text-2xl">&times;</button>
+          <h3 class="text-xl font-bold text-nord-0 dark:text-nord-6">Internship Certificate</h3>
+          <button
+            @click="showCertificate = false"
+            class="text-nord-3 hover:text-nord-0 dark:text-nord-4 dark:hover:text-nord-6 transition-colors text-2xl"
+          >
+            &times;
+          </button>
         </div>
         <div class="text-center">
-          <div class="bg-nord-5/50 rounded-lg p-4 border border-nord-3/20">
+          <div class="bg-nord-5/50 dark:bg-nord-2/30 rounded-lg p-4 border border-nord-3/20 dark:border-nord-3/40">
             <div class="mb-4">
-              <p class="text-lg font-semibold text-nord-0 mb-2">Software Engineer Intern Certificate</p>
-              <p class="text-sm text-nord-2 mb-2">Department of Information and Communications Technology</p>
-              <p class="text-sm text-nord-3 italic mb-4">June 2024 - July 2024</p>
+              <p class="text-lg font-semibold text-nord-0 dark:text-nord-6 mb-2">
+                Software Engineer Intern Certificate
+              </p>
+              <p class="text-sm text-nord-2 dark:text-nord-4 mb-2">
+                Department of Information and Communications Technology
+              </p>
+              <p class="text-sm text-nord-3 dark:text-nord-4 italic mb-4">
+                June 2024 - July 2024
+              </p>
             </div>
-            
+
             <!-- Certificate Image -->
             <div class="mb-4">
-              <img 
-                src="assets/dict-cert.png" 
-                alt="DICT Software Engineer Intern Certificate" 
-                class="max-w-full h-auto rounded-lg shadow-lg border border-nord-3/30 mx-auto"
-                style="max-height: 60vh;"
+              <img
+                src="assets/dict-cert.png"
+                alt="DICT Software Engineer Intern Certificate"
+                class="max-w-full h-auto rounded-lg shadow-lg border border-nord-3/30 dark:border-nord-3/50 mx-auto"
+                style="max-height: 60vh"
               />
             </div>
-            
+
             <!-- Action Buttons -->
             <div class="flex gap-3 justify-center mt-4">
-              <a 
-                href="assets/dict-cert.pdf" 
-                target="_blank" 
-                class="inline-flex items-center gap-2 px-4 py-2 bg-nord-8 text-nord-6 rounded-lg hover:bg-nord-7 transition-colors font-medium text-sm shadow-md"
+              <a
+                href="assets/dict-cert.pdf"
+                target="_blank"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-nord-8 text-nord-0 dark:bg-nord-8 dark:text-nord-6 rounded-lg hover:bg-nord-7 dark:hover:bg-nord-7 transition-colors font-medium text-sm shadow-md"
               >
                 View PDF
               </a>
-              <a 
-                href="assets/dict-cert.png" 
-                target="_blank" 
-                class="inline-flex items-center gap-2 px-4 py-2 bg-nord-10 text-nord-6 rounded-lg hover:bg-nord-9 transition-colors font-medium text-sm shadow-md"
+              <a
+                href="assets/dict-cert.png"
+                target="_blank"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-nord-10 text-nord-6 dark:bg-nord-10 dark:text-nord-0 rounded-lg hover:bg-nord-9 dark:hover:bg-nord-9 transition-colors font-medium text-sm shadow-md"
               >
                 View Full Image
               </a>
@@ -852,28 +1630,47 @@
     </div>
 
     <!-- About Me Modal -->
-    <div x-show="showAboutMe" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" @click="showAboutMe = false">
-      <div class="bg-nord-6 rounded-2xl p-10 max-w-3xl w-full max-h-[90vh] overflow-auto shadow-2xl border border-nord-3/20" @click.stop>
+    <div
+      x-show="showAboutMe"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-in duration-200"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      @click="showAboutMe = false"
+    >
+      <div
+        class="bg-nord-6 rounded-2xl p-10 max-w-3xl w-full max-h-[90vh] hide-scrollbar overflow-y-auto shadow-2xl border border-nord-3/20"
+        @click.stop
+      >
         <div class="flex items-center justify-between mb-8">
           <h3 class="text-3xl font-bold text-nord-0">About Me</h3>
-          <button @click="showAboutMe = false" class="text-nord-3 hover:text-nord-0 transition-colors text-3xl">&times;</button>
+          <button
+            @click="showAboutMe = false"
+            class="text-nord-3 hover:text-nord-0 transition-colors text-3xl"
+          >
+            &times;
+          </button>
         </div>
-        
+
         <div class="text-center">
           <!-- Profile Image -->
-          <img 
-            src="assets/myself.png" 
-            alt="Coren Andrei H. Andino" 
+          <img
+            src="assets/myself.png"
+            alt="Coren Andrei H. Andino"
             class="w-40 h-40 rounded-full object-cover border-4 border-nord-8/30 shadow-lg mx-auto mb-8"
           />
-          
+
           <!-- About Content -->
           <div>
             <h5 class="text-2xl font-semibold text-nord-10 mb-6">Hello! 👋</h5>
             <p class="text-lg text-nord-1 leading-relaxed max-w-2xl mx-auto">
-              I'm a fresh Computer Science graduate from Batangas State University TNEU. 
-              I love coding (sometimes 😄) and creating innovative solutions through web and mobile development. 
-              I also use Linux for ricing - I use Arch btw! 🐧
+              I'm a fresh Computer Science graduate from Batangas State
+              University TNEU. I love coding (sometimes 😄) and creating
+              innovative solutions through web and mobile development. I also
+              use Linux for ricing - I use Arch btw! 🐧
             </p>
           </div>
         </div>
@@ -887,13 +1684,31 @@
           isDarkMode: false,
           showCertificate: false,
           showAboutMe: false,
-          expandedProject: '',
+          expandedProject: "",
+          init() {
+            this.initTheme();
+          },
           toggleTheme() {
             this.isDarkMode = !this.isDarkMode;
             if (this.isDarkMode) {
-              document.body.classList.add("dark-mode");
+              document.documentElement.classList.add("dark");
+              localStorage.setItem('theme', 'dark');
             } else {
-              document.body.classList.remove("dark-mode");
+              document.documentElement.classList.remove("dark");
+              localStorage.setItem('theme', 'light');
+            }
+          },
+          initTheme() {
+            // Check for saved theme preference or default to light mode
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+              this.isDarkMode = true;
+              document.documentElement.classList.add("dark");
+            } else {
+              this.isDarkMode = false;
+              document.documentElement.classList.remove("dark");
             }
           },
         };
