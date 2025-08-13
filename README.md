@@ -1,6 +1,6 @@
-# 👋 Coren Andino - Portfolio
+# 👋 Hello there!
 
-Hi there! This is my personal portfolio website where you can get to know me better.
+This is my personal portfolio website where you can get to know me better.
 
 ## 🎯 Why I Built This
 
@@ -19,4 +19,4 @@ I created this portfolio to showcase myself, my projects, and my journey as a fr
 
 ---
 
-Thanks for visiting! 😊
+Thanks for visiting :)
